@@ -3,9 +3,12 @@ from logger import logger
 from driver import driver
 from definitions import TAG_NAME
 
-def collect_video_metadata(link):
+def get_link(link):
     driver.get(link)
     sleep(5)
+
+def collect_video_metadata(link):
+    get_link(link)
     videos = driver.find_elements(by=TAG_NAME, value=f"ytd-video-renderer")
     # for i in range(2, 2 + 10 - 1):
     #     try:
