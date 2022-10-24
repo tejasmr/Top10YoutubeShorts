@@ -1,15 +1,15 @@
 from logger import logger
 from driver import driver
-from definitions import CSS_SELECTOR
+from definitions import CLASS_NAME
 
 def collect_video_metadata(link):
     driver.get(link)
-    videos = []
-    for i in range(2, 2 + 10 - 1):
-        try:
-            videos.append(driver.find_element(by=CSS_SELECTOR, value=f"#contents > ytd-video-renderer:nth-child({i})"))
-        except:
-            pass
+    videos = driver.find_elements(by=CLASS_NAME, value=f"style-scope ytd-item-section-renderer")
+    # for i in range(2, 2 + 10 - 1):
+    #     try:
+    #         videos.append(driver.find_element(by=CLASS_NAME, value=f"style-scope ytd-item-section-renderer"))
+    #     except:
+    #         pass
     # .style-scope.ytd-item-section-renderer
     logger.debug("number of videos found = " + str(len(videos)))
     logger.debug("videos found = " + str(videos))
