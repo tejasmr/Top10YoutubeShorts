@@ -1,5 +1,5 @@
 from unicodedata import category
-from definitions import FINANCE_FILE, FINANCE_LINK,  categories
+from definitions import categories
 from logger import logger
 from scraper import scrape_videos
 
