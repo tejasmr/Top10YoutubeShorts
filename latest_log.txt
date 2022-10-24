@@ -1,2 +1,3 @@
 [DEBUG] number of videos found = 0
+[DEBUG] videos found = []
 [INFO] Ran the program successfully
