@@ -5,6 +5,7 @@ from logger import logger
 from driver import driver
 from definitions import TAG_NAME
 from pytube import YouTube
+from moviepy.editor import VideoFileClip, concatenate_videoclips
 
 def get_link(link):
     driver.get(link)
@@ -27,6 +28,11 @@ def collect_video_metadata(link):
         yt = YouTube(video_link)
         yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download()
     
+    clips = [VideoFileClip(file) for file in glob("*.mp4")]
+    final = concatenate_videoclips(clips, method="compose")
+    logger.log("Final video duration: " + str(final.duration))
+    final.write_videofile("Final.mp4")
+
     for file in glob("*.mp4"):
         logger.info(file)
         os.remove(file)
