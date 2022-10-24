@@ -1,10 +1,11 @@
+from time import sleep
 from logger import logger
 from driver import driver
 from definitions import TAG_NAME
 
 def collect_video_metadata(link):
     driver.get(link)
-    driver.implicitly_wait(5)
+    sleep(5)
     videos = driver.find_elements(by=TAG_NAME, value=f"ytd-video-renderer")
     # for i in range(2, 2 + 10 - 1):
     #     try:
