@@ -30,7 +30,7 @@ def collect_video_metadata(link):
     
     clips = [VideoFileClip(file) for file in glob("*.mp4")]
     final = concatenate_videoclips(clips, method="compose")
-    logger.log("Final video duration: " + str(final.duration))
+    logger.info("Final video duration: " + str(final.duration))
     final.write_videofile("Final.mp4")
 
     for file in glob("*.mp4"):
