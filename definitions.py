@@ -1,2 +1,1 @@
-def get_video_metadata(link):
-    pass
+FINANCE_LINK = "https://www.youtube.com/results?search_query=%23shorts+finance&sp=CAMSBAgCEAE%253D"
