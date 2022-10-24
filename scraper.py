@@ -1,2 +1,2 @@
-def collect_video_metadata(links):
+def collect_video_metadata(link):
     pass
