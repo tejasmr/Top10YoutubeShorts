@@ -18,4 +18,6 @@ def collect_video_metadata(link):
     # .style-scope.ytd-item-section-renderer
     logger.debug("number of videos found = " + str(len(videos)))
     logger.debug("videos found = " + str(videos))
-    logger.debug(driver.page_source)
+    for video in videos:
+        logger.debug(video.find_element(by=TAG_NAME, value='a'))
+        logger.debug(video.find_element(by=TAG_NAME, value='a').get_attribute('href'))
