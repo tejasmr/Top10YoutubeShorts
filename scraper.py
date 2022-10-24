@@ -4,5 +4,7 @@ from definitions import CSS_SELECTOR
 
 def collect_video_metadata(link):
     driver.get(link)
-    videos = driver.find_elements(by=CSS_SELECTOR, value="ytd-video-renderer.style-scope.ytd-item-section-renderer")
+    videos = driver.find_elements(by=CSS_SELECTOR, value="ytd-video-renderer")
+    # .style-scope.ytd-item-section-renderer
     logger.debug("number of videos found = " + str(len(videos)))
+    logger.debug("videos found = " + str(videos))
