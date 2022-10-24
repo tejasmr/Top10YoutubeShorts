@@ -23,7 +23,7 @@ jobs:
           pip3 install -r ./requirements.txt
           sudo apt install php php-common gcc
           sudo apt install imagemagick
-          cp policy.xml /etc/ImageMagick*/
+          sudo cp policy.xml /etc/ImageMagick*/
 
       - name: Run job
         run: python3 run.py
