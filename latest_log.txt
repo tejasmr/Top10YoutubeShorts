@@ -1,11 +1,10 @@
 [DEBUG] number of videos found = 20
-[INFO] Final video duration: 287.56
+[INFO] Final video duration: 299.45
 [INFO] Your Grandpas Investment Strategy Is Dead  shorts.mp4
 [INFO] Who said this 🤔🎤shorts finance interview.mp4
 [INFO] Finance_final.mp4
 [INFO] I Am Selling It All For Bitcoin (Kevin O’Leary) shorts.mp4
 [INFO] Get Ready To Pay More For Gas shorts.mp4
-[INFO] Plaza of Heroes Trending Down [15-Second Finance] MTG Shorts.mp4
 [INFO] How much money is in your bank account  🤔💵 shorts finance interview.mp4
 [INFO] How much money is in your bank account  🤔💵shorts finance interview.mp4
 [INFO] Gary Vee School Failed Me!!! 🤯😱 shorts money finance education.mp4
