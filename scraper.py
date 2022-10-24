@@ -8,8 +8,6 @@ from definitions import CLASS_NAME, TAG_NAME
 from pytube import YouTube
 from moviepy.editor import VideoFileClip, concatenate_videoclips, TextClip, CompositeVideoClip
 
-from symbol import compound_stmt
-
 def get_link(link):
     driver.get(link)
     sleep(5)
