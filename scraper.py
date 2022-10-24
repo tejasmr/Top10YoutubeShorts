@@ -6,7 +6,7 @@ from logger import logger
 from driver import driver
 from definitions import CSS_SELECTOR, TAG_NAME
 from pytube import YouTube
-from moviepy.editor import VideoFileClip, concatenate_videoclips, TextClip, CompositeVideoClip
+from moviepy.editor import VideoFileClip, concatenate_videoclips, TextClip, CompositeVideoClip, vfx
 
 def get_link(link):
     driver.get(link)
@@ -50,9 +50,10 @@ def scrape_videos(link, file, label):
         description += f'{10-i}. {channels[i]} - {titles[i]} : {video_links[i]}\n'
     for i in range(0, len(links)):
         textclip = TextClip(str(10-i), fontsize=100, color='white', stroke_color='black', align='West', font='Lato-Black')
-        textclip = textclip.set_position((0, 0))
+        textclip = textclip.set_position((10, 10))
         videoclip = VideoFileClip(links[i])
         compositeclip = CompositeVideoClip([videoclip, textclip])
+        compositeclip = compositeclip.fx(vfx.speedx, 1.1)
         clips.append(compositeclip.set_duration(videoclip.duration))
 
     final = concatenate_videoclips(clips, method="compose")
