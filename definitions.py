@@ -15,7 +15,7 @@ class Category():
 categories = []
 
 def add(cat):
-    categories.append(cat)
+    categories.append(Category(cat))
 
 add("Finance")
 add("Fitness")
