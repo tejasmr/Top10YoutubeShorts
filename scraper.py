@@ -28,5 +28,5 @@ def collect_video_metadata(link):
         yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download()
     
     for file in glob("*.mp4"):
-        logger.log(str(file))
+        logger.info(file)
         os.remove(file)
