@@ -1,6 +1,4 @@
-from logging import info, debug, warning, error, critical, basicConfig, DEBUG
-
-basicConfig(level=DEBUG, format='[%(levelname)s] %(message)s')
+from logger import logger
 
 if __name__ == "__main__":
-    info('Ran the program successfully')
+    logger.info('Ran the program successfully')
