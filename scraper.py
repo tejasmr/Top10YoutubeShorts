@@ -1,5 +1,4 @@
 from datetime import datetime
-from glob import glob
 import os
 from time import sleep
 from logger import logger
@@ -60,7 +59,7 @@ def scrape_videos(link, file, label):
     logger.info("Final video duration: " + str(final.duration))
     final.write_videofile(file)
 
-    for file_name in glob("*.mp4"):
+    for file_name in links:
         logger.info(file_name)
         if file_name != file:
             os.remove(file_name)
