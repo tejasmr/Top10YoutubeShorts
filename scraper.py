@@ -52,7 +52,7 @@ def scrape_videos(link, file, label):
         textclip = TextClip(str(10-i), fontsize=100, color='white', stroke_color='black', align='West', font='Lato-Black')
         textclip = textclip.set_position((0, 0))
         videoclip = VideoFileClip(links[i])
-        compositeclip = CompositeVideoClip([textclip, videoclip])
+        compositeclip = CompositeVideoClip([videoclip, textclip])
         clips.append(compositeclip.set_duration(videoclip.duration))
 
     final = concatenate_videoclips(clips, method="compose")
