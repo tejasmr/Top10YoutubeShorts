@@ -1,5 +1,6 @@
 [DEBUG] number of videos found = 20
-[INFO] Final video duration: 296.67
+[INFO] Final video duration: 287.56
+[INFO] Your Grandpas Investment Strategy Is Dead  shorts.mp4
 [INFO] Who said this 🤔🎤shorts finance interview.mp4
 [INFO] Finance_final.mp4
 [INFO] I Am Selling It All For Bitcoin (Kevin O’Leary) shorts.mp4
