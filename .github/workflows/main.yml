@@ -23,3 +23,18 @@ jobs:
 
       - name: Run job
         run: python3 run.py
+
+      - name: Config name
+        run: git config user.name tejasmr
+
+      - name: Config email
+        run: git config user.email totejasmr@gmail.com
+
+      - name: Add
+        run: git add .
+
+      - name: Commit
+        run: git commit -m "Added logs"
+
+      - name: Push
+        run: git push
