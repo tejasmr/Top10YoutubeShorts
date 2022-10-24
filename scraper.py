@@ -12,7 +12,7 @@ def get_link(link):
     driver.get(link)
     sleep(5)
 
-def scrape_video(link, file, label):
+def scrape_videos(link, file, label):
     title = ""
     get_link(link)
     videos = driver.find_elements(by=TAG_NAME, value=f"ytd-video-renderer")
