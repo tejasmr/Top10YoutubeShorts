@@ -59,7 +59,7 @@ def scrape_videos(link, file, label):
     logger.info("Final video duration: " + str(final.duration))
     final.write_videofile(file)
 
-    for file in glob("*.mp4"):
-        logger.info(file)
-        if file != file:
-            os.remove(file)
+    for file_name in glob("*.mp4"):
+        logger.info(file_name)
+        if file_name != file:
+            os.remove(file_name)
