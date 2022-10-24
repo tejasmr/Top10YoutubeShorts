@@ -4,7 +4,7 @@ import os
 from time import sleep
 from logger import logger
 from driver import driver
-from definitions import CLASS_NAME, file, TAG_NAME
+from definitions import CLASS_NAME, TAG_NAME
 from pytube import YouTube
 from moviepy.editor import VideoFileClip, concatenate_videoclips, TextClip, CompositeVideoClip
 
