@@ -35,4 +35,5 @@ def collect_video_metadata(link):
 
     for file in glob("*.mp4"):
         logger.info(file)
-        os.remove(file)
+        if file != "Final.mp4":
+            os.remove(file)
