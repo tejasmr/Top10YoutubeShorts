@@ -9,4 +9,6 @@ ch.setFormatter(logging.Formatter('[%(levelname)s] %(message)s'))
 logger.addHandler(ch)
 
 fh = logging.FileHandler(r'latest_log.txt')
+fh.setLevel(logging.DEBUG)
+fh.setFormatter(logging.Formatter('[%(levelname)s] %(message)s'))
 logger.addHandler(fh)
