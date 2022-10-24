@@ -4,7 +4,7 @@ from definitions import TAG_NAME
 
 def collect_video_metadata(link):
     driver.get(link)
-    logger.debug(driver.page_source)
+    driver.implicitly_wait(5)
     videos = driver.find_elements(by=TAG_NAME, value=f"ytd-video-renderer")
     # for i in range(2, 2 + 10 - 1):
     #     try:
@@ -14,3 +14,4 @@ def collect_video_metadata(link):
     # .style-scope.ytd-item-section-renderer
     logger.debug("number of videos found = " + str(len(videos)))
     logger.debug("videos found = " + str(videos))
+    logger.debug(driver.page_source)
