@@ -1,2 +1,1 @@
-Ran the program successfully
 [INFO] Ran the program successfully
