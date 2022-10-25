@@ -57,7 +57,7 @@ def scrape_videos(link, file, label):
 
     final = concatenate_videoclips(clips, method="compose")
     logger.info("Final video duration: " + str(final.duration))
-    final.write_videofile(file, threads=4, progress_bar=False)
+    final.write_videofile(file, threads=4, logger=None)
 
     os.listdir()
 
