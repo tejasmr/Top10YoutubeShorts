@@ -26,9 +26,10 @@ def scrape_videos(link, file, label):
     video_links = []
     
     for video in videos:
-        video_link = video.find_element(by=TAG_NAME, value='a').get_attribute('href')
-        video_title = video.find_element(by=TAG_NAME, value='a').get_attribute('title')
-        video_channel = video.find_element(by=CSS_SELECTOR, value=".yt-simple-endpoint.style-scope.yt-formatted-string")
+        ele = video.find_element(by=TAG_NAME, value='a')
+        video_link = ele.get_attribute('href')
+        video_title = ele.get_attribute('title')
+        video_channel = video.find_element(by=CSS_SELECTOR, value=".yt-simple-endpoint.style-scope.yt-formatted-string").text
         yt = YouTube(video_link)
         links.append(yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download())
         video_links.append(video_link)
@@ -60,7 +61,7 @@ def scrape_videos(link, file, label):
     logger.info("Final video duration: " + str(final.duration))
     final.write_videofile(file, threads=4, logger=None)
 
-    command = f"python3 upload_video.py --noauth_local_webserver --file {file} --title {title} --description {description} --privacyStatus public"
+    command = f'python3 upload_video.py --noauth_local_webserver --file "{file}" --title "{title}" --description "{description}" --privacyStatus public'
 
     # os.listdir()
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
