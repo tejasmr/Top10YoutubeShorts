@@ -34,6 +34,9 @@ jobs:
       - name: Config email
         run: git config user.email totejasmr@gmail.com
 
+      - name: Track mp4
+        run: git lfs track "*.mp4"
+
       - name: Add
         run: git add .
 
