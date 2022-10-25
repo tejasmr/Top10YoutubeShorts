@@ -61,5 +61,4 @@ def scrape_videos(link, file, label):
 
     for file_name in links:
         logger.info(file_name)
-        if file_name != file:
-            os.remove(file_name)
+        os.remove(file_name.split("/")[-1])
