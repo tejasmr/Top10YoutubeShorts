@@ -40,6 +40,10 @@ def scrape_videos(link, file, label):
     titles = titles[::-1]
     channels = channels[::-1]
     video_links = video_links[::-1]
+    logger.info(links)
+    logger.info(titles)
+    logger.info(channels)
+    logger.info(video_links)
 
     if os.path.exists(file):
         os.remove(file)
