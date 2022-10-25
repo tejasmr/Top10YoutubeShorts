@@ -59,6 +59,8 @@ def scrape_videos(link, file, label):
     logger.info("Final video duration: " + str(final.duration))
     final.write_videofile(file)
 
+    os.listdir()
+
     for file_name in links:
         logger.info(file_name)
         os.remove(file_name.split("/")[-1])
