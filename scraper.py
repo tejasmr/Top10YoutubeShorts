@@ -5,6 +5,7 @@ from logger import logger
 from driver import driver
 from definitions import CSS_SELECTOR, TAG_NAME
 from pytube import YouTube
+import subprocess
 from moviepy.editor import VideoFileClip, concatenate_videoclips, TextClip, CompositeVideoClip, vfx
 
 def get_link(link):
@@ -59,7 +60,11 @@ def scrape_videos(link, file, label):
     logger.info("Final video duration: " + str(final.duration))
     final.write_videofile(file, threads=4, logger=None)
 
-    os.listdir()
+    command = f"python3 upload_video.py --noauth_local_webserver --file {file} --title {title} --description {description} --privacyStatus public"
+
+    # os.listdir()
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    process.communicate()
 
     for file_name in links:
         logger.info(file_name)
