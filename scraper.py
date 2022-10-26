@@ -3,7 +3,7 @@ import os
 from time import sleep
 from logger import logger
 from driver import driver
-from definitions import CSS_SELECTOR, TAG_NAME
+from definitions import CSS_SELECTOR, TAG_NAME, ID
 from pytube import YouTube
 import subprocess
 from moviepy.editor import VideoFileClip, concatenate_videoclips, TextClip, CompositeVideoClip, vfx
@@ -26,13 +26,13 @@ def scrape_videos(link, file, label):
     video_links = []
     
     for video in videos:
-        ele = video.find_element(by=CSS_SELECTOR, value='yt-formatted-string.style-scope.ytd-video-renderer')
+        ele = video.find_element(by=ID, value='video-title')
         attrs=[]
         for attr in ele.get_property('attributes'):
             attrs.append([attr['name'], attr['value']])
         logger.info(attrs)
         video_link = ele.get_attribute('href')
-        video_title = ele.get_attribute('text')
+        video_title = ele.get_attribute('title')
         video_channel = video.find_element(by=CSS_SELECTOR, value=".yt-simple-endpoint.style-scope.yt-formatted-string").get_attribute('text')
         yt = YouTube(video_link)
         links.append(yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download())
