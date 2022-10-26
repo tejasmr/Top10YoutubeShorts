@@ -1,8 +1,8 @@
 name: CollectAndUploadToYoutube
 on:
-  push:
-  pull_request:
   workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'  # every day at midnight
 
 jobs:
   build:
