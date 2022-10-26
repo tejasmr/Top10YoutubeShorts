@@ -4,7 +4,7 @@ The goal of this project was to compile top 10 youtube shorts in the genres of F
 
 Using this will violate YouTube terms and policy. So I am archiving it
 
-Technologies used:
+### Technologies used:
 1. [Python](https://www.python.org/)
 2. [Selenium](https://www.selenium.dev/)
 3. [Youtube Data v3 API](https://developers.google.com/youtube/v3/)
