@@ -27,9 +27,13 @@ def scrape_videos(link, file, label):
     
     for video in videos:
         ele = video.find_element(by=TAG_NAME, value='a')
+        attrs=[]
+        for attr in ele.get_property('attributes'):
+            attrs.append([attr['name'], attr['value']])
+        logger.info(attrs)
         video_link = ele.get_attribute('href')
         video_title = ele.get_attribute('title')
-        video_channel = video.find_element(by=CSS_SELECTOR, value=".yt-simple-endpoint.style-scope.yt-formatted-string").text
+        video_channel = video.find_element(by=CSS_SELECTOR, value=".yt-simple-endpoint.style-scope.yt-formatted-string").get_attribute('text')
         yt = YouTube(video_link)
         links.append(yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download())
         video_links.append(video_link)
