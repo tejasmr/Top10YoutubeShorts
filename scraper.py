@@ -13,24 +13,28 @@ def get_link(link):
     sleep(5)
 
 def scrape_videos(link, file, label):
-    title = ""
-    get_link(link)
-    videos = driver.find_elements(by=TAG_NAME, value=f"ytd-video-renderer")
+    logger.info("Created a driver...")
     
-    logger.debug("number of videos found = " + str(len(videos)))
+    logger.info(f"Hitting {link}...")
+    get_link(link)
 
+    logger.info("Trying to find video elements...")
+    videos = driver.find_elements(by=TAG_NAME, value=f"ytd-video-renderer")
+
+    title = ""
     videos = videos[:10]
     links = []
     titles = []
     channels = []
     video_links = []
+
+    logger.info("Capturing metadata for videos")
     
     for video in videos:
         ele = video.find_element(by=ID, value='video-title')
         attrs=[]
         for attr in ele.get_property('attributes'):
             attrs.append([attr['name'], attr['value']])
-        logger.info(attrs)
         video_link = ele.get_attribute('href')
         video_title = ele.get_attribute('title')
         video_channel = video.find_element(by=CSS_SELECTOR, value=".yt-simple-endpoint.style-scope.yt-formatted-string").get_attribute('text')
@@ -44,14 +48,13 @@ def scrape_videos(link, file, label):
     titles = titles[::-1]
     channels = channels[::-1]
     video_links = video_links[::-1]
-    logger.info(links)
-    logger.info(titles)
-    logger.info(channels)
-    logger.info(video_links)
+
+    logger.info("Deleting the previous file...")
 
     if os.path.exists(file):
         os.remove(file)
 
+    logger.info("Creating a composite clips...")
     clips = []
     title = f"Top {len(links)} {label} shorts of the day {datetime.today()}"
     description = "Disclaimer : No copyright intention, I do not own the audio, video or the images in this video. All rights belong to the rightful owner. \n\nCredits: \n" 
@@ -65,19 +68,25 @@ def scrape_videos(link, file, label):
         compositeclip = compositeclip.fx(vfx.speedx, 1.1)
         clips.append(compositeclip.set_duration(videoclip.duration))
 
+    logger.info("Concatenating the composite clips...")
     final = concatenate_videoclips(clips, method="compose")
-    logger.info("Final video duration: " + str(final.duration))
+    
+    logger.info("Writing to file...")
     final.write_videofile(file, threads=4, logger=None)
 
+    logger.info("Running command...")
     command = ['python3', 'upload_video.py', '--noauth_local_webserver', f'--file={file}', f'--title={title}', f'--description={description}', '--privacyStatus=public']
 
     # os.listdir()
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    logger.info(process.communicate())
+    stdout, stderr = process.communicate()
+    logger.debug(str(stdout))
+    logger.debug(str(stderr))
 
+    logger.info("Cleaning up...")
     for file_name in links:
         if os.path.exists(file_name):
             os.remove(file_name.split("/")[-1])
         else:
-            logger.info(f"{file_name} not found")
+            logger.warning(f"{file_name} not found")
             
