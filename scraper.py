@@ -26,13 +26,13 @@ def scrape_videos(link, file, label):
     video_links = []
     
     for video in videos:
-        ele = video.find_element(by=TAG_NAME, value='a')
+        ele = video.find_element(by=CSS_SELECTOR, value='yt-formatted-string.style-scope.ytd-video-renderer')
         attrs=[]
         for attr in ele.get_property('attributes'):
             attrs.append([attr['name'], attr['value']])
         logger.info(attrs)
         video_link = ele.get_attribute('href')
-        video_title = ele.get_attribute('title')
+        video_title = ele.get_attribute('text')
         video_channel = video.find_element(by=CSS_SELECTOR, value=".yt-simple-endpoint.style-scope.yt-formatted-string").get_attribute('text')
         yt = YouTube(video_link)
         links.append(yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download())
@@ -69,7 +69,7 @@ def scrape_videos(link, file, label):
     logger.info("Final video duration: " + str(final.duration))
     final.write_videofile(file, threads=4, logger=None)
 
-    command = f'python3 upload_video.py --noauth_local_webserver --file "{file}" --title "{title}" --description "{description}" --privacyStatus public'
+    command = ['python3', 'upload_video.py', '--noauth_local_webserver', '--file', file, '--title', title, '--description', description, '--privacyStatus', 'public']
 
     # os.listdir()
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
