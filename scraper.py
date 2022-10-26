@@ -77,4 +77,13 @@ def scrape_videos(link, file, label):
 
     for file_name in links:
         logger.info(file_name)
+        if os.path.exists(file_name):
+            logger.info(f"{file_name} found")
+        else:
+            logger.info(f"{file_name} not found")
+            
+        if os.path.exists(file_name):
+            logger.info(f"{file_name.split('/')[-1]} found")
+        else:
+            logger.info(f"{file_name.split('/')[-1]} not found")
         os.remove(file_name.split("/")[-1])
