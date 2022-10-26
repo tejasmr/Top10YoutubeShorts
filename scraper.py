@@ -69,7 +69,7 @@ def scrape_videos(link, file, label):
     logger.info("Final video duration: " + str(final.duration))
     final.write_videofile(file, threads=4, logger=None)
 
-    command = ['python3', 'upload_video.py', '--noauth_local_webserver', '--file', file, '--title', title, '--description', description, '--privacyStatus', 'public']
+    command = ['python3', 'upload_video.py', '--noauth_local_webserver', f'--file={file}', f'--title={title}', f'--description={description}', '--privacyStatus=public']
 
     # os.listdir()
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
