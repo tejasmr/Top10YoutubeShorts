@@ -18,8 +18,8 @@ def add(cat):
     categories.append(Category(cat))
 
 add("Finance")
-add("Fitness")
-add("Dance")
-add("Gaming")
-add("Streaming")
-add("Movies")
+#add("Fitness")
+#add("Dance")
+#add("Gaming")
+#add("Streaming")
+#add("Movies")
