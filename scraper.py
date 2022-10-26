@@ -73,17 +73,11 @@ def scrape_videos(link, file, label):
 
     # os.listdir()
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    process.communicate()
+    logger.info(process.communicate())
 
     for file_name in links:
-        logger.info(file_name)
         if os.path.exists(file_name):
-            logger.info(f"{file_name} found")
+            os.remove(file_name.split("/")[-1])
         else:
             logger.info(f"{file_name} not found")
             
-        if os.path.exists(file_name):
-            logger.info(f"{file_name.split('/')[-1]} found")
-        else:
-            logger.info(f"{file_name.split('/')[-1]} not found")
-        os.remove(file_name.split("/")[-1])
